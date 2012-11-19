@@ -1,10 +1,10 @@
 %%%-------------------------------------------------------------------
-%%% @author Juan Puig <jpuig@brocade.com>
+%%% @author Juan Puig <juan.puig@gmail.com>
 %%% @copyright (C) 2012, Juan Puig
 %%% @doc
 %%% Individual worker.
 %%% @end
-%%% Created : 15 Nov 2012 by Juan Puig <jpuig@brocade.com>
+%%% Created : 15 Nov 2012 by Juan Puig <juan.puig@gmail.com>
 %%%-------------------------------------------------------------------
 -module(epi_worker).
 

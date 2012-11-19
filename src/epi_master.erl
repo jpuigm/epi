@@ -1,11 +1,11 @@
 %%%-------------------------------------------------------------------
-%%% @author Juan Puig <jpuig@brocade.com>
+%%% @author Juan Puig <juan.puig@gmail.com>
 %%% @copyright (C) 2012, Juan Puig
 %%% @doc
 %%% Master process that reads N and P values. Responsible to create P 
 %%% workers and order N experiments across them.
 %%% @end
-%%% Created : 15 Nov 2012 by Juan Puig <jpuig@brocade.com>
+%%% Created : 15 Nov 2012 by Juan Puig <juan.puig@gmail.com>
 %%%-------------------------------------------------------------------
 -module(epi_master).
 

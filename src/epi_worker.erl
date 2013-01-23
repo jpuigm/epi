@@ -2,7 +2,7 @@
 %%% @author Juan Puig <juan.puig@gmail.com>
 %%% @copyright (C) 2012, Juan Puig
 %%% @doc
-%%% Individual worker.
+%%% Individual worker. It's given a number of tests to be performed.
 %%% @end
 %%% Created : 15 Nov 2012 by Juan Puig <juan.puig@gmail.com>
 %%%-------------------------------------------------------------------
@@ -31,14 +31,14 @@ calculus(N, Master, Opt) ->
 calculate(0, Targets, _Opt) ->
     Targets;
 calculate(Rem, Targets, Opt) ->
-    case lists:member(verbose, Opt) of
-        true ->
-            Total = proplists:get_value(total, Opt, 1),
-            Percentage = 100 - (100*Rem / Total),
-            io:format("% ~p~n", [Percentage]);
-        _ ->
-            ok
-    end,
+    %% case lists:member(verbose, Opt) of
+    %%     true ->
+    %%         Total = proplists:get_value(total, Opt, 1),
+    %%         Percentage = 100 - (100*Rem / Total),
+    %%         io:format("% ~p~n", [Percentage]);
+    %%     _ ->
+    %%         ok
+    %% end,
     {X, Y} = {gen_point(), gen_point()},
     case is_target(X, Y) of
         true ->

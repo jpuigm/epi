@@ -3,7 +3,7 @@
 %%% @copyright (C) 2012, Juan Puig
 %%% @doc
 %%% Master process that reads N and P values. Responsible to create P 
-%%% workers and order N experiments across them.
+%%% workers and order N experiments for each of them.
 %%% @end
 %%% Created : 15 Nov 2012 by Juan Puig <juan.puig@gmail.com>
 %%%-------------------------------------------------------------------
@@ -44,14 +44,20 @@ init([]) ->
                 experiments = 0}}.
 
 handle_call({pi, N, P}, _From, State) ->
+    process_flag(trap_exit, true),
     {ok, Pids} = start_workers(P, N div P, []),
+    io:format("~p workers successfully spawned ~n", [length(Pids)]),
     {ok, C} = wait_for_results(Pids, 0),
-    Reply = {pi, 4*C/N},
-    {reply, Reply, State}.
+    Result = 4*C/N,
+    io:format("~s ~n", [float_to_list(Result)]),
+    {reply, ok, State}.
 
 handle_cast(_Msg, State) ->
     {noreply, State}.
 
+handle_info({'EXIT', _From, _Reason}, State) ->
+    %% audit log
+    {noreply, State};
 handle_info(_Info, State) ->
     {noreply, State}.
 
@@ -67,8 +73,8 @@ code_change(_OldVsn, State, _Extra) ->
 
 start_workers(0, _, Pids) ->
     {ok, Pids};
-start_workers(1, Np, Pids) ->
-    start_workers(0, Np, [spawn_link(epi_worker, calculus, [Np, self(), [verbose, {total, Np}]])|Pids]);
+%% start_workers(1, Np, Pids) ->
+%%     start_workers(0, Np, [spawn_link(epi_worker, calculus, [Np, self(), [verbose, {total, Np}]])|Pids]);
 start_workers(P, Np, Pids) ->
     start_workers(P-1, Np, [spawn_link(epi_worker, calculus, [Np, self()])|Pids]).
 

@@ -2,6 +2,8 @@
 -author("Zvi").
 -compile([export_all]).
 
+%% Ref: http://erlang.org/pipermail/erlang-questions/2008-April/034112.html
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% functional and parallel PI calculation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
